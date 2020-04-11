@@ -1,9 +1,8 @@
-import 'dotenv/config';
 import express from 'express';
 import typeDefs from '../graphql/typeDefs';
 import resolvers from '../graphql/resolvers';
 import { ApolloServer } from 'apollo-server-express';
-import config from './config';
+import { PORT } from './config';
 
 export class Server {
   private readonly _app: express.Application;
@@ -30,7 +29,7 @@ export class Server {
 
   start() {
     this._app.listen('3000', () => {
-      return console.log(`Server started at http://localhost:${3000} 🚀`);
+      return console.log(`Server started at http://localhost:${PORT} 🚀`);
     });
   }
 }

@@ -1,4 +1,6 @@
-import "dotenv/config"
+
+import dotenv from 'dotenv';
+dotenv.config();
 import renderer from './lib/renderer';
 import { Server } from './lib/server';
 

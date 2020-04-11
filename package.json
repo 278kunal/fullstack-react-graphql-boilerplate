@@ -25,10 +25,10 @@
   },
   "scripts": {
     "lint": "eslint '**'",
-    "dev": "npm-run-all --parallel dev:build-server dev:build-client",
+    "dev": "npm-run-all --parallel dev:build-server dev:build-client dev:server",
     "prod": "npm-run-all --parallel prod:*",
     "dev:server": "NODE_ENV=development nodemon --watch build --exec \"node dist/server.bundle.js\"",
-    "dev:debug": "NODE_ENV=development nodemon --watch build --exec \"node dist/server.bundle.js --inspect\"",
+    "dev:debug": "NODE_ENV=development nodemon --watch build --exec \"node --inspect dist/server.bundle.js\"",
     "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --watch",
     "dev:build-client": "NODE_ENV=development webpack --config webpack.client.js --watch",
     "prod:server": "NODE_ENV=production nodemon build --exec \"node dist/server.bundle.js\"",

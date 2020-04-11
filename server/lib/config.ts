@@ -2,15 +2,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const IS_STAGING = process.env.NODE_ENV === 'development';
-const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+export const IS_STAGING = process.env.NODE_ENV === 'development';
 
-const GRAPHQL_PATH = '/graphql';
+export const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
-export default {
-  PORT: process.env.PORT,
-  NODE_ENV: process.env.NODE_ENV,
-  IS_PRODUCTION,
-  IS_STAGING,
-  GRAPHQL_PATH,
-};
+export const GRAPHQL_PATH = process.env.GRRAPHQL_PATH;
+
+export const URI = process.env.URI;
+
+export const PORT = process.env.PORT;
+
+export const NODE_ENV = process.env.NODE_ENV;
