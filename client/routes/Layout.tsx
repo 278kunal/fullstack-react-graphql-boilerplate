@@ -20,7 +20,7 @@ const Layout = () =>
     </nav>
 
     <Switch>
-      {routes.map(route => <Route key={route.name} {...route} />)}
+      {routes.map((route: any) => <Route key={route.name} {...route} />)}
     </Switch>
   </div>;
 

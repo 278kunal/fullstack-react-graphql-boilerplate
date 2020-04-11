@@ -1,0 +1,13 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "root",
+  "database": "tester2",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["server/db/entity/**/*.ts"],
+  "migrations": ["server/db/migration/**/*.ts"],
+  "subscribers": ["server/db/subscriber/**/*.ts"]
+}

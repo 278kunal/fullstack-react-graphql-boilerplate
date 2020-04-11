@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
-import fetch from 'node-fetch'
+import fetch from 'cross-fetch'
 import { ApolloProvider } from '@apollo/react-common';
 import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
@@ -9,7 +9,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { renderToStringWithData } from "@apollo/react-ssr";
 import Layout from '../../client/routes/Layout';
 
-const Html = ({ content, state }) => {
+const Html = ({ content, state }: {content: any, state: any}) => {
   return (
     <html>
       <head>
@@ -27,11 +27,8 @@ const Html = ({ content, state }) => {
 }
 
 export default (req: any, res: any): void => {
-  debugger;
   const client = new ApolloClient({
     ssrMode: true,
-    // Remember that this is the interface the SSR server will use to connect to the
-    // API server, so we need to ensure it isn't firewalled, etc
     link: createHttpLink({
       uri: 'http://localhost:3000',
       fetch,
