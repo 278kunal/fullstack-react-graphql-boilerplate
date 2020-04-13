@@ -5,6 +5,8 @@ import User from '../entity/user-entity';
 import { MyContext } from '../types/MyContext';
 import { isAuth } from '../middlewares/isAuth';
 import { logger } from '../middlewares/logger';
+import Mailer from '../../lib/mailer';
+import { createConfirmationUrl } from '../../utils/createConfirmationUrl';
 
 @Resolver()
 export default class UserResolver {
@@ -32,6 +34,8 @@ export default class UserResolver {
       email,
       password: hashedPassword,
     }).save();
+
+    await Mailer.sendMail(email, await createConfirmationUrl(user.id));
     return user;
   }
 
@@ -51,6 +55,10 @@ export default class UserResolver {
     const valid = await bcrypt.compare(password, user.password);
 
     if (!valid) {
+      return null;
+    }
+
+    if (!user.confirmed) {
       return null;
     }
 
