@@ -1,0 +1,36 @@
+version: '3.7'
+services:
+  db:
+    image: postgres
+    restart: 'always'
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: rootdb
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - '35432:5432'
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '5050:80'
+    restart: unless-stopped
+  redis:
+    image: redis
+    depends_on:
+      - db
+    volumes:
+      - ./data:/data
+  api:
+    image: full-stack-api:latest
+    depends_on:
+      - db
+      - redis
+    ports:
+      - '12000:12000'
