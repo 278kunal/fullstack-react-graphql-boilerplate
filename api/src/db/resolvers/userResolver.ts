@@ -1,7 +1,7 @@
 import { Resolver, Query, Mutation, Arg, Ctx, UseMiddleware } from 'type-graphql';
-import RegisterInput from '../validators/register-input';
+import RegisterInput from '../validators/registerInput';
 import bcrypt from 'bcryptjs';
-import User from '../entity/user-entity';
+import User from '../entity/userEntity';
 import { MyContext } from '../types/MyContext';
 import { isAuth } from '../middlewares/isAuth';
 import { logger } from '../middlewares/logger';

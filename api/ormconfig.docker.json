@@ -1,14 +1,18 @@
 {
-  "name": "default",
   "type": "postgres",
   "host": "db",
   "port": 5432,
   "username": "postgres",
-  "password": "root",
+  "password": "postgres",
   "database": "tester2",
   "synchronize": true,
   "logging": false,
-  "entities": ["server/db/entity/**/*.ts"],
-  "migrations": ["server/db/migration/**/*.ts"],
-  "subscribers": ["server/db/subscriber/**/*.ts"]
+  "entities": ["dist/db/**/*.js"],
+  "migrations": ["dist/db/migration/**/*.js"],
+  "subscribers": ["dist/db/subscriber/**/*.js"],
+  "cli": {
+    "entitiesDir": "dist/db/entity",
+    "migrationsDir": "dist/db/migration",
+    "subscribersDir": "dist/db/subscriber"
+  }
 }

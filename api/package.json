@@ -6,11 +6,6 @@
   "repository": "https://github.com/278kunal/fullstack-react-graphql-boilerplate.git",
   "author": "278kunal@gmail.com",
   "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "**/*.{js,jsx}": [
       "eslint",

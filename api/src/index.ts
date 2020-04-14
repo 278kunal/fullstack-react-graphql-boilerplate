@@ -7,8 +7,8 @@ import connectRedis from 'connect-redis';
 import cors from 'cors';
 import { redis } from './lib/redis';
 
-import bookResolver from './db/resolvers/book-resolver';
-import userResolver from './db/resolvers/user-resolver';
+import bookResolver from './db/resolvers/bookResolver';
+import userResolver from './db/resolvers/userResolver';
 import { Server } from './lib/server';
 import DB from './db';
 
