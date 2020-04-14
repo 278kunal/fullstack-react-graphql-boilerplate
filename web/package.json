@@ -1,0 +1,92 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "A web client for fullstack React GraphQL Typescript boilerplate",
+  "main": "index.js",
+  "repository": "https://github.com/278kunal/fullstack-react-graphql-boilerplate.git",
+  "author": "278kunal@gmail.com",
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "/**/*.{js,jsx}": [
+      "eslint",
+      "pretty-quick — staged",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "lint": "eslint '**'",
+    "build-dev": "npm-run-all --parallel dev-build-client dev-build-server",
+    "build-prod": "npm-run-all --parallel prod-build-client prod-build-server",
+    "dev-server": "NODE_ENV=development nodemon build --exec \"node dist/server.bundle.js\"",
+    "dev-debug": "NODE_ENV=development node --inspect -r ts-node/register server/index.ts",
+    "dev-build-server": "NODE_ENV=development webpack --config webpack.server.js --watch",
+    "dev-build-client": "NODE_ENV=development webpack --config webpack.client.js --watch",
+    "prod-server": "NODE_ENV=production nodemon build --exec \"node dist/server.bundle.js\"",
+    "prod-build-client": "NODE_ENV=production webpack --config webpack.server.js",
+    "prod-build-server": "NODE_ENV=production webpack --config webpack.client.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^13.11.1",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/webpack-env": "^1.15.1",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.3",
+    "nodemon": "^2.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.4",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "@apollo/react-common": "^3.1.4",
+    "@apollo/react-hooks": "^3.1.4",
+    "@apollo/react-ssr": "^4.0.0-beta.1",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/runtime": "^7.9.2",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "@types/react-router": "^5.1.5",
+    "apollo-boost": "^0.4.7",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link-http": "^1.5.17",
+    "apollo-server-express": "^2.12.0",
+    "cross-fetch": "^3.0.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2"
+  },
+  "engines": {
+    "node": "12.16.2",
+    "npm": "6.14.4",
+    "yarn": "1.22.4"
+  }
+}
